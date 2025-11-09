@@ -6,16 +6,16 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/gitops-repo.git # Your GitOps repo URL
-    targetRevision: HEAD # Or a specific branch like 'main'
-    path: ./ # Points to the root of your GitOps repository
+    repoURL: https://github.com/ZuyzuyAnh/k3s-gitops.git
+    targetRevision: HEAD
+    path: ./
   destination:
     server: https://kubernetes.default.svc
-    namespace: default # Or the namespace where you want the general app to land
+    namespace: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true # Important for creating namespaces if defined in Kustomization
-      - ApplyOutOfSyncOnly=true # Can be useful for large syncs
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

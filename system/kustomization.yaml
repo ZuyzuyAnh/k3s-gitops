@@ -4,3 +4,4 @@ kind: Kustomization
 resources: 
   - cluster-issuer-lets-encrypt.yaml
   - certificate.yaml
+  - namespace.yaml

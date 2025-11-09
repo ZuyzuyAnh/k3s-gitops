@@ -4,9 +4,15 @@ metadata:
   name: argocd-ingress
   namespace: argocd
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    traefik.ingress.kubernetes.io/service.scheme: http
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
   ingressClassName: traefik
+  tls:
+  - hosts:
+    - ptit-boot-checkin.mooo.com
+    secretName: argocd-tls-cert
   rules:
   - host: ptit-boot-checkin.mooo.com
     http:

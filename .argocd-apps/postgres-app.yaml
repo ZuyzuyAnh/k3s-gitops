@@ -1,19 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: postgresql
+  name: database-app
   namespace: argocd
 spec:
   project: default
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: db
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: postgresql
     targetRevision: 18.0.8
     helm:
-      values: |-
+      values: |
         global:
           storageClass: local-path
         auth:
@@ -29,7 +26,12 @@ spec:
           limits:
             cpu: 1
             memory: 1Gi
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: db
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

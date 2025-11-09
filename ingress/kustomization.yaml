@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - argocd-ingress.yaml
   - argocd-tls-option.yaml
+  - be-ingress.yaml

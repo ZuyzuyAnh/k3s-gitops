@@ -25,13 +25,13 @@ spec:
                 name: backend-secret
           readinessProbe:
             httpGet:
-              path: /health
+              path: /app-api/health
               port: 3456
             initialDelaySeconds: 5
             periodSeconds: 5
           livenessProbe:
             httpGet:
-              path: /health
+              path: /app-api/health
               port: 3456
             initialDelaySeconds: 15
             periodSeconds: 10

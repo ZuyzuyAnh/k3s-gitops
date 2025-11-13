@@ -3,14 +3,13 @@ kind: Service
 metadata:
   name: backend
   namespace: apps
-  annotations:
-    tailscale.com/expose: "true"
 spec:
   selector:
     app: backend
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/part-of: three-tier
   ports:
     - name: http
       port: 3456
       targetPort: 3456
-  type: LoadBalancer
-  loadBalancerClass: tailscale
+  type: ClusterIP

@@ -1,25 +1,15 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
-  name: backend-ingress
+  name: backend
   namespace: apps
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-staging
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
-  ingressClassName: traefik
-  tls:
-    - hosts:
-        - ptit-boot-checkin.mooo.com
-      secretName: backend-tls-cert
-  rules:
-    - host: ptit-boot-checkin.mooo.com
-      http:
-        paths:
-          - path: /app-api
-            pathType: Prefix
-            backend:
-              service:
-                name: backend
-                port:
-                  number: 3456
+  selector:
+    app: backend
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/part-of: three-tier
+  ports:
+    - name: http
+      port: 3456
+      targetPort: 3456
+  type: ClusterIP

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
+  namespace: apps
 spec:
   replicas: 1
   selector:
@@ -23,15 +24,23 @@ spec:
                 name: backend-config
             - secretRef:
                 name: backend-secret
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 3456
-            initialDelaySeconds: 20
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 3456
-            initialDelaySeconds: 30
-            periodSeconds: 15
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: 3456
+          #     scheme: HTTP
+          #   initialDelaySeconds: 25 # wait for app + DB to be ready
+          #   periodSeconds: 5
+          #   timeoutSeconds: 5
+          #   successThreshold: 1
+          #   failureThreshold: 6 # mark pod as unready if reach 6 consecutive failures
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: 3456
+          #     scheme: HTTP
+          #   initialDelaySeconds: 40 # wait for app to stabilize
+          #   periodSeconds: 15
+          #   timeoutSeconds: 5
+          #   successThreshold: 1
+          #   failureThreshold: 3 # restart if reach 3 consecutive failures

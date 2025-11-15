@@ -4,8 +4,14 @@ metadata:
   name: traefik-chart-values
   namespace: kube-system
 data:
-  # Traefik Helm chart values to enable Kubernetes Ingress and CRD providers
-  values.yaml: |
+  values-0-000-HelmChart-ValuesContent.yaml: |
+    providers:
+      kubernetesCRD:
+        enabled: true
+      kubernetesIngress:
+        enabled: true
+
     additionalArguments:
       - "--providers.kubernetescrd"
-      - "--providers.kubernetesingress"
+      - "--providers.kubernetescrd.allowEmptyServices=true"
+      - "--providers.kubernetesingress=true"

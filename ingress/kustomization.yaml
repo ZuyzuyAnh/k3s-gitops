@@ -5,3 +5,4 @@ resources:
   - argocd-ingress.yaml
   - argocd-tls-option.yaml
   - be-ingress.yaml
+  - traefik-middleware-strip.yaml

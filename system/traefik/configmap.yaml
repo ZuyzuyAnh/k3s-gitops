@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: traefik-chart-values
+  namespace: kube-system
+data:
+  # Traefik Helm chart values to enable Kubernetes Ingress and CRD providers
+  values.yaml: |
+    additionalArguments:
+      - "--providers.kubernetescrd"
+      - "--providers.kubernetesingress"

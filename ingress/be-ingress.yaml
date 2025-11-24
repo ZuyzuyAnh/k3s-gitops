@@ -6,18 +6,18 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.middlewares: apps-strip-app-api@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: default-cors-headers@kubernetescrd
 spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - ptit-boot-checkin.mooo.com
+        - api-boot-checkin.mooo.com
       secretName: backend-tls-cert
   rules:
-    - host: ptit-boot-checkin.mooo.com
+    - host: api-boot-checkin.mooo.com
       http:
         paths:
-          - path: /app-api
+          - path: /
             pathType: Prefix
             backend:
               service:

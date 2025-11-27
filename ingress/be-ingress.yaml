@@ -11,10 +11,10 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - api-boot-checkin.mooo.com
+        - api.ptit-boot-checkin.site
       secretName: backend-tls-cert
   rules:
-    - host: api-boot-checkin.mooo.com
+    - host: api.ptit-boot-checkin.site
       http:
         paths:
           - path: /

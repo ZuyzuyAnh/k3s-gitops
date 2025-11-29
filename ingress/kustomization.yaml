@@ -6,3 +6,4 @@ resources:
   - argocd-tls-option.yaml
   - be-ingress.yaml
   - traefik-cors-middleware.yaml
+  - grafana-ingress.yaml

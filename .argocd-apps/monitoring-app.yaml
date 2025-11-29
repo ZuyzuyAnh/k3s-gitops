@@ -1,0 +1,73 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring-stack
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://victoriametrics.github.io/helm-charts/
+    chart: victoria-metrics-k8s-stack
+    targetRevision: 0.25.1
+    helm:
+      values: |
+        vmsingle:
+          enabled: true
+          spec:
+            retentionPeriod: "3d"
+            resources:
+              limits:
+                memory: "350Mi"
+                cpu: "300m"
+            storage:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: "5Gi"
+              storageClassName: local-path
+
+        vmagent:
+          spec:
+            resources:
+              limits:
+                memory: "150Mi"
+                cpu: "150m"
+
+        vmalert:
+          enabled: false 
+
+        grafana:
+          enabled: true
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+          additionalDataSources:
+            - name: Loki
+              type: loki
+              url: http://loki.monitoring.svc.cluster.local:3100
+              access: proxy
+              isDefault: false
+
+        kubelet:
+          enabled: true
+        kubeControllerManager:
+          enabled: true
+        coreDns:
+          enabled: true
+        kubeEtcd:
+          enabled: true
+        kubeStateMetrics:
+          enabled: true
+        nodeExporter:
+          enabled: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

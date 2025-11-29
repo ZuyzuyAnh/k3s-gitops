@@ -39,6 +39,7 @@ spec:
 
         grafana:
           enabled: true
+          adminPassword: "ptitbootcheckin"
           resources:
             limits:
               memory: "256Mi"

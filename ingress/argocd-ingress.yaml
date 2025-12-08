@@ -11,10 +11,10 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - ptit-boot-checkin.mooo.com
+        - argocd.ptit-boot-checkin.site
       secretName: argocd-tls-cert
   rules:
-    - host: ptit-boot-checkin.mooo.com
+    - host: argocd.ptit-boot-checkin.site
       http:
         paths:
           - path: /

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: duyanhwork/ptit-final:6e4a8b7-20251206-091254
+          image: duyanhwork/ptit-final:c88c593-20251209-174827
           imagePullPolicy: Always
           ports:
             - containerPort: 3456

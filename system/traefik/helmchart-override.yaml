@@ -8,3 +8,4 @@ metadata:
 spec:
   chart: traefik
   repo: https://helm.traefik.io/traefik
+  version: 26.1.0

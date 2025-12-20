@@ -6,6 +6,18 @@ metadata:
 spec:
   valuesContent: |-
     ports:
+      web:
+        port: 8000
+        expose: true
+        exposedPort: 80
+        protocol: TCP
+      websecure:
+        port: 8443
+        expose: true
+        exposedPort: 443
+        protocol: TCP
+        tls:
+          enabled: true
       postgres:
         port: 5432
         expose: true

@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - configmap.yaml
   - helmchart-override.yaml
-  - port-config.yaml

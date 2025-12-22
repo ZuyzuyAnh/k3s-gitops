@@ -9,7 +9,7 @@ data:
   OTHER_URLS_CLIENT: "[]"
   NODE_ENV: "development"
   LOGIN_EXPIRE_IN: "24h"
-  DB_HOST: "database-app-postgresql.db.svc.cluster.local"
+  DB_HOST: "db.ptit-boot-checkin.site"
   DB_PORT: "5432"
   DB_NAME: "event_db"
   DB_AUTH_SOURCE: "admin"

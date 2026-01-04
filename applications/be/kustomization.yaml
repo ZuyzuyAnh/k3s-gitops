@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: apps
 resources:
   - configmap.yaml
-  - secret.yaml
+  # - secret.yaml  # Will be replaced with sealed-secret.yaml
   - deployment.yaml
   - service.yaml
 images:

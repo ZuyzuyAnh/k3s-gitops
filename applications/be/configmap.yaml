@@ -21,3 +21,6 @@ data:
   HOST: "0.0.0.0"
   PORT: "3456"
   REQUESTS_LIMIT_PER_MINUTE: "1000"
+  FIREBASE_PROJECT_ID: "your-firebase-project-id"
+  FIREBASE_CLIENT_EMAIL: "your-firebase-client-email"
+  FIREBASE_PRIVATE_KEY: "your-firebase"

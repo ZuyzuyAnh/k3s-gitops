@@ -8,3 +8,4 @@ resources:
   - traefik-cors-middleware.yaml
   - grafana-ingress.yaml
   - db-ingress.yaml
+  - chatbot-ingress.yaml

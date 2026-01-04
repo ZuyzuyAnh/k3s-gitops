@@ -1,33 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: chatbot
   namespace: apps
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend
+      app: chatbot
   template:
     metadata:
       labels:
-        app: backend
+        app: chatbot
     spec:
       containers:
-        - name: backend
-          image: duyanhwork/ptit-final:6863fe0-20260103-081932
+        - name: chatbot
+          image: duyanhwork/chatbot-service:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 3456
+            - containerPort: 5000
           envFrom:
-            - configMapRef:
-                name: backend-config
             - secretRef:
-                name: backend-secret
+                name: chatbot-secret
           # readinessProbe:
           #   httpGet:
           #     path: /health
-          #     port: 3456
+          #     port: 5000
           #     scheme: HTTP
           #   initialDelaySeconds: 25 # wait for app + DB to be ready
           #   periodSeconds: 5

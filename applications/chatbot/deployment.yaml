@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: chatbot
-          image: duyanhwork/chatbot-service:latest
+          image: duyanhwork/ptit-final-chatbot:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000

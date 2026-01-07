@@ -1,41 +1,41 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: longhorn
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  project: default
-  source:
-    chart: longhorn
-    repoURL: https://charts.longhorn.io
-    targetRevision: v1.8.0
-    helm:
-      releaseName: longhorn
-      values: |
-        persistence:
-          defaultClassReplicaCount: 2
-        defaultSettings:
-          createDefaultDiskLabeledNodes: true
-        ingress:
-          enabled: true
-          host: longhorn.ptit-boot-checkin.site
-          path: /
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: longhorn-system
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
-      - RespectIgnoreDifferences=true
-    retry:
-      limit: 5
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: longhorn
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   project: default
+#   source:
+#     chart: longhorn
+#     repoURL: https://charts.longhorn.io
+#     targetRevision: v1.8.0
+#     helm:
+#       releaseName: longhorn
+#       values: |
+#         persistence:
+#           defaultClassReplicaCount: 2
+#         defaultSettings:
+#           createDefaultDiskLabeledNodes: true
+#         ingress:
+#           enabled: true
+#           host: longhorn.ptit-boot-checkin.site
+#           path: /
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: longhorn-system
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
+#       - ServerSideApply=true
+#       - RespectIgnoreDifferences=true
+#     retry:
+#       limit: 5
+#       backoff:
+#         duration: 5s
+#         factor: 2
+#         maxDuration: 3m

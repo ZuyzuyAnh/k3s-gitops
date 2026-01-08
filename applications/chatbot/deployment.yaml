@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: chatbot
-          image: duyanhwork/ptit-final-chatbot:19cf003-20260108-194848
+          image: duyanhwork/ptit-final-chatbot:62d2932-20260108-203311
           imagePullPolicy: Always
           ports:
             - containerPort: 5000

@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - cluster-issuer-lets-encrypt.yaml
   - namespace.yaml
+  - pvc.yaml
   - sealed-secrets/
   - traefik/

@@ -22,6 +22,8 @@ spec:
           enabled: true
           host: longhorn.ptit-boot-checkin.site
           path: /
+        helmPreUpgradeCheckerJob:
+          enabled: false
   destination:
     server: "https://kubernetes.default.svc"
     namespace: longhorn-system

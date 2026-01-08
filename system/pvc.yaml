@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: backend-static-pvc nt
+  name: my-shared-data
   namespace: apps
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: longhorn
+  storageClassName: nfs-client
   resources:
     requests:
       storage: 5Gi

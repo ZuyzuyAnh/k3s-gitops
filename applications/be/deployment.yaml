@@ -4,7 +4,7 @@ metadata:
   name: backend
   namespace: apps
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: backend
@@ -22,6 +22,9 @@ spec:
           envFrom:
             - secretRef:
                 name: backend-secret
+          volumeMounts:
+            - name: shared-storage-vol
+              mountPath: /app/public/uploads
           # readinessProbe:
           #   httpGet:
           #     path: /health
@@ -42,3 +45,7 @@ spec:
           #   timeoutSeconds: 5
           #   successThreshold: 1
           #   failureThreshold: 3 # restart if reach 3 consecutive failures
+      volumes:
+        - name: shared-storage-vol
+          persistentVolumeClaim:
+            claimName: my-shared-data
